@@ -18,7 +18,9 @@ int parent_find(int x, vector<int>& parent) {
 
 void dfs(int u, vector<vector<int>>& adj, vector<bool>& visit) {
     visit[u] = true;
-    for(auto v : adj[u]) if(!visit[v]) dfs(v, adj, visit);
+    for(auto v : adj[u])
+	if(!visit[v])
+            dfs(v, adj, visit);
 }
 
 int unite(int v1, int v2, vector<int>& parent, vector<int>& grade) {
