@@ -9,7 +9,7 @@ typedef long double ld;
 const int maxn=2*1e5+50;
 
 bool compare(pair<pair<int,int>,double> a, pair<pair<int,int>,double> b) 
-	{return(a.second < b.second);}
+{return(a.second < b.second);}
 
 int parent_find(int x, vector<int>& parent) {
     while(parent[x] != x) x = parent[x];
