@@ -8,22 +8,22 @@ typedef long long ll;
 typedef long double ld;
 const int maxn=2*1e5+50;
 
-bool compare(pair<pair<int,int>,double> a, pair<pair<int,int>,double> b) {return(a.second < b.second);}
+bool compare(pair<pair<int,int>,double> a, pair<pair<int,int>,double> b) 
+{return(a.second < b.second);}
 
-int parent_find(int x, vector<int>& parent) 
-{
+int parent_find(int x, vector<int>& parent) {
     while(parent[x] != x) x = parent[x];
     return x;
 }
 
-void dfs(int u, vector<vector<int>>& adj, vector<bool>& visit) 
-{
+void dfs(int u, vector<vector<int>>& adj, vector<bool>& visit) {
     visit[u] = true;
-    for(auto v : adj[u]) if(!visit[v]) dfs(v, adj, visit);
+    for(auto v : adj[u])
+	if(!visit[v])
+            dfs(v, adj, visit);
 }
 
-int unite(int v1, int v2, vector<int>& parent, vector<int>& grade) 
-{
+int unite(int v1, int v2, vector<int>& parent, vector<int>& grade) {
     v2 = parent_find(v2, parent);v1 = parent_find(v1, parent); 
     if (v1 == v2) return 0; 
     if(grade[v1] < grade[v2]) swap(v1, v2);
@@ -36,17 +36,15 @@ int unite(int v1, int v2, vector<int>& parent, vector<int>& grade)
 int main() 
 {
     int Num;cin >> Num;
-    for(int i=1; i<=Num; i++) 
-    {
+    for(int i=1; i<=Num; i++) {
         int n, r;cin >> n >> r;
 
         vector<pair<int, int>> Graphland(n);
         vector<pair<pair<int,int>,double>> Graph;
-		vector<int> parent(n);
+	vector<int> parent(n);
         vector<int> grade(n, 0);
-		vector<vector<int>> adj(n);
-		
-		double RoadLength = 0 , RailLength = 0;
+	vector<vector<int>> adj(n);	
+	double RoadLength = 0 , RailLength = 0;
         int num_states = 0;
 
         for(int j=0; j<n; j++) cin >> Graphland[j].first >> Graphland[j].second;
